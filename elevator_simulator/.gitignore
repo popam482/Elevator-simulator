@@ -1,0 +1,13 @@
+.vs/
+.vscode/
+bin/
+obj/
+x64/
+Debug/
+Release/
+*.db
+*.ipch
+*.suo
+*.user
+logs/
+*.exe

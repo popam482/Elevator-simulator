@@ -3,6 +3,8 @@
 #include <vector> 
 #include <map>
 #include <fstream>
+#include <iomanip>
+#include <string>
 
 using namespace std;
 
@@ -14,10 +16,11 @@ private:
 	map<int, queue<Passenger*>> waitingPassengers;
 
 public:
-	Building(int floors, int elevatorsNum) {
+	Building(int floors, int elevatorsNum, int initialTargetFloor = 1) {
 		this->floors = floors;
-		for (int i = 0; i < elevatorsNum; i++)
-			elevators.emplace_back(i + 1);
+		for (int i = 0; i < elevatorsNum; i++) {
+			elevators.emplace_back(i + 1, 1, initialTargetFloor);
+		}
 	}
 
 	void addWaitingPassenger(Passenger* p) {
@@ -25,9 +28,20 @@ public:
 	}
 
 	void logState(int currentTime, ofstream& logFile) {
-		logFile << "[Time: " << currentTime << "]\n";
+		logFile << "[" << setfill('0') << setw(2) << currentTime << "] ";
+		
+		bool hadMovement = false;
 		for (auto& e : elevators) {
-			logFile << "Elevator " << e.getId() << " at floor " << e.getCurrentFloor() << "\n";
+			if (e.getMovingState() != 0) {
+				if (hadMovement) logFile << " | ";
+				string direction = (e.getMovingState() == 1) ? "up" : "down";
+				logFile << "Elevator " << e.getId() << " moving " << direction << " (floor " << e.getCurrentFloor() << ")";
+				hadMovement = true;
+			}
+		}
+		
+		if (!hadMovement) {
+			logFile << "All elevators idle";
 		}
 		logFile << "\n";
 	}
@@ -37,7 +51,10 @@ public:
 	}
 
 	int getWaitingPassengersNum() {
-		return waitingPassengers.size();
+		int total = 0;
+    	for (const auto& [floor, q] : waitingPassengers)
+        	total += q.size();
+    	return total;
 	}
 
 	map<int, queue<Passenger*>>& getWaitingPassengers() {

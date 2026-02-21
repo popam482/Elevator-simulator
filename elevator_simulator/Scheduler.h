@@ -1,6 +1,7 @@
 #pragma once
 #include "Building.h"
 #include <fstream>
+#include <climits>
 using namespace std;
 
 class Scheduler
@@ -49,16 +50,45 @@ public:
 	}
 
 	void assignElevator() {
+
+		auto& waitingMap = building->getWaitingPassengers();
+		for (auto it = waitingMap.begin(); it != waitingMap.end(); ++it) {
+			int floor = it->first;
+			auto& passengers = it->second;
+			
+			if (passengers.empty()) continue;
+		
+			Elevator* nearest = nullptr;
+			int minDist = INT_MAX;
+			
+			for (auto& el : building->getElevators()) {
+				int dist = abs(el.getCurrentFloor() - floor);
+				if (dist < minDist) {
+					minDist = dist;
+					nearest = &el;
+				}
+			}
+			
+			if (nearest != nullptr && nearest->getCurrentFloor() != floor) {
+				nearest->setTargetFloor(floor);
+				if (nearest->getCurrentFloor() < floor) {
+					nearest->setMovingState(1); 
+				} else {
+					nearest->setMovingState(-1); 
+				}
+		
+			}
+		}
 	}
 
 	void moveElevator() {
-
 		for (auto& el : building->getElevators()) {
-			if (el.hasRequest()) {
+			if (el.getMovingState() != 0) {
 				el.move();
+			} else {
+				el.setMovingState(0); 
 			}
 		}
-
 	}
 
 	void boardPassengers() {
@@ -68,6 +98,14 @@ public:
 				Passenger* p = waiting.front();
 				waiting.pop();
 				e.board(p);
+
+				int dest = p->getDestinationFloor();
+            	e.setTargetFloor(dest);
+            	if(e.getCurrentFloor() < dest)
+                	e.setMovingState(1);
+            	else
+                	e.setMovingState(-1);
+
 				logFile << "[Time: " << currentTime << "] Passenger " << p->getId()
 					<< " boarded elevator " << e.getId() << "\n";
 			}

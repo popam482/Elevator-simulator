@@ -3,21 +3,23 @@ class Passenger
 {
 private:
 
-	static int id;
+	static int nextId;
+	int passengerId;
 	int startFloor;
 	int destinationFloor;
 	int arrivalTime;
-	int inElevator;
+	bool inElevator;
 
 public:
-	Passenger(int id, int startFloor, int destinationFloor, int arrivalTime) {
-		this->id = id++;
+	Passenger(int startFloor, int destinationFloor, int arrivalTime) {
+		this->passengerId = nextId++;
 		this->startFloor = startFloor;
 		this->destinationFloor = destinationFloor;
 		this->arrivalTime = arrivalTime;
+		this->inElevator = false;
 	}
 
-	void isInElevator(bool inElev) {
+	void setInElevator(bool inElev) {
 		inElevator = inElev;
 	}
 
@@ -28,7 +30,7 @@ public:
 	}
 
 	int getId() {
-		return id;
+		return passengerId;
 	}
 
 	int getStartFloor() {
@@ -38,7 +40,13 @@ public:
 	int getArrivalTime() {
 		return arrivalTime;
 	}
-};
 
-int Passenger::id = 1;
+	int getDestinationFloor() {
+		return destinationFloor;
+	}
+
+	bool isInElevator() {
+		return inElevator;
+	}
+};
 
