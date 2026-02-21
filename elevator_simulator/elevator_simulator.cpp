@@ -5,6 +5,8 @@
 #include <cmath>
 #include "Building.h"
 #include "Scheduler.h"
+#include "FileLogger.h"
+#include "ConsoleLogger.h"
 
 using namespace std;
 
@@ -90,7 +92,25 @@ int main(int argc, char* argv[]) {
 	cout << "=========================" << endl << endl;
 
 	Building* building = new Building(floors, elevators);
-	Scheduler scheduler(building, passengers);
+
+	cout << "Choose output mode:" << endl;
+	cout << "1 for file (logs/simulation.log)" << endl;
+	cout << "2 for console" << endl;
+	cout << "Choice: ";
+
+	int choice;
+	do {
+		cin >> choice;
+	} while (choice != 1 && choice != 2);
+
+	Logger* chosenLogger;
+
+	if (choice == 1)
+		chosenLogger = new FileLogger("logs/simulation.log");
+	else
+		chosenLogger = new ConsoleLogger();
+
+	Scheduler scheduler(building, passengers, chosenLogger);
 	
 	int maxTime = 500; 
 	for (size_t i = 0; i < passengers.size(); i++) {
@@ -103,7 +123,10 @@ int main(int argc, char* argv[]) {
 
 	cout << "Running simulation (max time: " << maxTime << " units)" << endl;
 	scheduler.runSimulation(maxTime);
-	cout << "Simulation complete! Check logs/simulation.log for details." << endl;
+	if (choice == 1)
+		cout << "Simulation complete! Check logs/simulation.log for details." << endl;
+	else
+		cout << "Simulation complete! Check the console for details."<<endl;
 
 	for (size_t i = 0; i < passengers.size(); i++) {
 		delete passengers[i];

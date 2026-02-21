@@ -11,42 +11,20 @@ private:
 	bool inElevator;
 
 public:
-	Passenger(int startFloor, int destinationFloor, int arrivalTime) {
-		this->passengerId = nextId++;
-		this->startFloor = startFloor;
-		this->destinationFloor = destinationFloor;
-		this->arrivalTime = arrivalTime;
-		this->inElevator = false;
-	}
+	Passenger(int startFloor, int destinationFloor, int arrivalTime);
 
-	void setInElevator(bool inElev) {
-		inElevator = inElev;
-	}
+	void setInElevator(bool inElev);
 
-	bool isDestinationFloor(int floor) {
-		if (floor == destinationFloor)
-			return true;
-		return false;
-	}
+	bool isDestinationFloor(int floor);
 
-	int getId() {
-		return passengerId;
-	}
+	int getId();
 
-	int getStartFloor() {
-		return startFloor;
-	}
+	int getStartFloor();
 
-	int getArrivalTime() {
-		return arrivalTime;
-	}
+	int getArrivalTime();
 
-	int getDestinationFloor() {
-		return destinationFloor;
-	}
+	int getDestinationFloor();
 
-	bool isInElevator() {
-		return inElevator;
-	}
+	bool isInElevator();
 };
 
