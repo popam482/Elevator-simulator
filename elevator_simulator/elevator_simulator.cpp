@@ -123,6 +123,9 @@ int main(int argc, char* argv[]) {
 
 	cout << "Running simulation (max time: " << maxTime << " units)" << endl;
 	scheduler.runSimulation(maxTime);
+
+	scheduler.printStats();
+
 	if (choice == 1)
 		cout << "Simulation complete! Check logs/simulation.log for details." << endl;
 	else
@@ -132,6 +135,7 @@ int main(int argc, char* argv[]) {
 		delete passengers[i];
 	}
 	delete building;
+	delete chosenLogger;
 
 	return 0;
 }

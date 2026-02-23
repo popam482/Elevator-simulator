@@ -83,6 +83,7 @@ using namespace std;
 				Passenger* p = waiting.front();
 				waiting.pop();
 				e.board(p);
+				p->setBoardTime(currentTime);
 
 				int dest = p->getDestinationFloor();
 				e.setTargetFloor(dest);
@@ -101,10 +102,25 @@ using namespace std;
 		for (auto& e : building->getElevators()) {
 			vector<Passenger*> exited = e.unboard();
 			for (auto p : exited) {
+				p->setDropOffTime(currentTime);
 				logger->log("[Time: " + to_string(currentTime) + "] Passenger " + to_string(p->getId())
 					+ " unboarded at floor " + to_string(e.getCurrentFloor()));
 			}
 		}
+	}
+
+	void Scheduler::printStats() {
+		int totalWait = 0, maxWait = 0;
+		for (auto p : allPassengers) {
+			int wait = p->getBoardTime() - p->getArrivalTime();
+			totalWait += wait;
+			maxWait = std::max(maxWait, wait);
+		}
+		logger->log("=== SIMULATION COMPLETE ===");
+		logger->log("Passengers served: " + std::to_string(allPassengers.size()));
+		logger->log("Average wait time: " + std::to_string(totalWait / (int)allPassengers.size()) + " ticks");
+		logger->log("Maximum wait time: " + std::to_string(maxWait) + " ticks");
+		logger->log("Total ticks: " + std::to_string(currentTime));
 	}
 
 

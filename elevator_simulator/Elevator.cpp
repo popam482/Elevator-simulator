@@ -23,9 +23,14 @@ using namespace std;
 			movingState = 0;
 	}
 
-	void Elevator::board(Passenger* p) {
-		passengers.push_back(p);
-		p->setInElevator(true);
+	bool Elevator::board(Passenger* p) {
+		if ((int)passengers.size() >= MAX_CAPACITY)
+			return false;
+		else {
+			passengers.push_back(p);
+			p->setInElevator(true);
+			return true;
+		}
 	}
 
 	vector<Passenger*> Elevator::unboard() {

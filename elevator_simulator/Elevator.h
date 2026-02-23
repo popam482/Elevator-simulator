@@ -14,13 +14,14 @@ private:
 	std::vector<Passenger*> passengers;
 	int movingState; // -1-moving down, 0-not moving, 1-moving up 
 	int targetFloor;
+	static const int MAX_CAPACITY = 5;
 
 public:
 	Elevator(int id, int currentFloor, int targetFloor = 1);
 
 	void move();
 
-	void board(Passenger* p);
+	bool board(Passenger* p);
 
 	std::vector<Passenger*> unboard();
 

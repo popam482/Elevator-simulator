@@ -8,6 +8,10 @@
 		this->destinationFloor = destinationFloor;
 		this->arrivalTime = arrivalTime;
 		this->inElevator = false;
+
+		this->waitStartTime = arrivalTime;
+		this->boardTime = -1;
+		this->dropoffTime = -1;
 	}
 
 	void Passenger::setInElevator(bool inElev) {
@@ -38,4 +42,16 @@
 
 	bool Passenger::isInElevator() {
 		return inElevator;
+	}
+
+	void Passenger::setBoardTime(int time) {
+		boardTime = time;
+	}
+
+	void Passenger::setDropOffTime(int time) {
+		dropoffTime = time;
+	}
+
+	int Passenger::getBoardTime() {
+		return boardTime;
 	}

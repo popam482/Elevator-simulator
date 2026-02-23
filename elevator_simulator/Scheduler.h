@@ -29,5 +29,6 @@ public:
 
 	void unboardPassengers();
 
+	void printStats();
 };
 
