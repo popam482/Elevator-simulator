@@ -10,6 +10,7 @@ A C++ simulation of a multi-elevator building system with configurable floors, e
 
 ## Build
 Open `elevator_simulator.sln` in Visual Studio 2022 and build.
+C++ version: ISO C++ 20 Standard
 
 ## Usage
 Default input file: `input.txt`
