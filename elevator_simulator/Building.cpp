@@ -56,5 +56,12 @@ using namespace std;
 	map<int, queue<Passenger*>>& Building::getWaitingPassengers() {
 		return waitingPassengers;
 	}
-
+	
+	bool Building::hasFinished(){
+		for (auto& [floor, q] : waitingPassengers)
+			if (!q.empty()) return false;
+		for (auto& e : elevators)
+			if (e.getPassengerCount() > 0) return false;
+		return true;
+	}
 

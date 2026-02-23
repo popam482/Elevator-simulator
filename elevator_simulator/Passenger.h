@@ -35,5 +35,7 @@ public:
 	void setDropOffTime(int time);
 
 	int getBoardTime();
+
+	int getDropOffTime();
 };
 

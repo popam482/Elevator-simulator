@@ -28,5 +28,7 @@ public:
 
 	std::map<int, std::queue<Passenger*>>& getWaitingPassengers();
 
+	bool hasFinished();
+
 };
 

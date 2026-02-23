@@ -55,3 +55,7 @@
 	int Passenger::getBoardTime() {
 		return boardTime;
 	}
+
+	int Passenger::getDropOffTime() {
+		return dropoffTime;
+	}
