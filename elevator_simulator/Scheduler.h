@@ -30,5 +30,7 @@ public:
 	void unboardPassengers();
 
 	void printStats();
+
+	bool allServed();
 };
 

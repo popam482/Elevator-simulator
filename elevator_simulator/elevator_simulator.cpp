@@ -112,16 +112,15 @@ int main(int argc, char* argv[]) {
 
 	Scheduler scheduler(building, passengers, chosenLogger);
 	
-	int maxTime = 500; 
-	for (size_t i = 0; i < passengers.size(); i++) {
-		Passenger* p = passengers[i];
-		int estimatedTime = p->getArrivalTime() + abs(p->getDestinationFloor() - p->getStartFloor()) * 2 + 100;
-		if (estimatedTime > maxTime) {
-			maxTime = estimatedTime;
-		}
+	int maxTime = 0;
+	for (auto p : passengers) {
+		int estimated = p->getArrivalTime() + (floors * 2) + 50;
+		if (estimated > maxTime) maxTime = estimated;
 	}
+	if (maxTime < 300) maxTime = 1000; 
 
-	cout << "Running simulation (max time: " << maxTime << " units)" << endl;
+
+	cout << "\nRunning simulation (max time: " << maxTime << " units)" << endl;
 	scheduler.runSimulation(maxTime);
 
 	scheduler.printStats();

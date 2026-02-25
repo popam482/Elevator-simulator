@@ -1,44 +1,41 @@
 #pragma once
-
-#include "Passenger.h"
-#include <queue>
 #include <vector>
+#include <set>
+#include "Passenger.h"
 
-
-class Elevator
-{
-private:
-
-	int id;
-	int currentFloor;
-	std::vector<Passenger*> passengers;
-	int movingState; // -1-moving down, 0-not moving, 1-moving up 
-	int targetFloor;
-	static const int MAX_CAPACITY = 5;
-
+class Elevator {
 public:
-	Elevator(int id, int currentFloor, int targetFloor = 1);
+    static const int MAX_CAPACITY = 10;
 
-	void move();
+    Elevator(int id, int currentFloor, int targetFloor);
 
-	bool board(Passenger* p);
+    void move();
+    bool board(Passenger* p);
+    std::vector<Passenger*> unboard();
+    bool hasRequest();
 
-	std::vector<Passenger*> unboard();
+    int getId();
+    int getCurrentFloor();
+    void setMovingState(int state);
+    int getMovingState();
+    int getPassengerCount();
 
-	bool hasRequest();
+    void addStop(int floor);
+    void removeStop(int floor);
+    bool hasStops() const;
+    int getNextStop() const;      
+    void updateDirection();       
+    const std::set<int>& getStops() const;
 
-	int getId();
+    void setTargetFloor(int floor);
+    int getTargetFloor();
 
-	int getCurrentFloor();
+private:
+    int id;
+    int currentFloor;
+    int targetFloor;
+    int movingState;
 
-	void setMovingState(int state);
-
-	int getMovingState();
-
-	int getPassengerCount();
-
-	void setTargetFloor(int floor);
-
-	int getTargetFloor();
-
+    std::vector<Passenger*> passengers;
+    std::set<int> stops;
 };

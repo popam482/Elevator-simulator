@@ -1,132 +1,191 @@
 #include "Scheduler.h"
 #include "Building.h"
-#include <fstream>
 #include <climits>
 #include <set>
+#include <algorithm>
 using namespace std;
 
-	Scheduler::Scheduler(Building* b, vector<Passenger*>& passengers, Logger *l) {
-		building = b;
-		allPassengers = passengers;
-		logger = l;
-	}
+Scheduler::Scheduler(Building* b, vector<Passenger*>& passengers, Logger* l) {
+    building = b;
+    allPassengers = passengers;
+    logger = l;
+    currentTime = 0;
+}
 
-	void Scheduler::runSimulation(int maxTime) {
-		for (currentTime = 0; currentTime <= maxTime; currentTime++) {
-			tick();
-		}
-	}
+void Scheduler::runSimulation(int maxTime) {
+    for (currentTime = 0; currentTime <= maxTime; currentTime++) {
+        tick();
+        if (allServed()) {
+            logger->log("[Time: " + std::to_string(currentTime)
+                + "] All passengers served. Simulation ending early.");
+            break;
+        }
+    }
+}
 
-	void Scheduler::tick() {
+bool Scheduler::allServed() {
+    for (auto& [floor, lst] : building->getWaitingPassengers())
+        if (!lst.empty()) return false;
+    for (auto& e : building->getElevators())
+        if (e.getPassengerCount() > 0) return false;
+    for (auto p : allPassengers)
+        if (p->getArrivalTime() > currentTime) return false;
+    return true;
+}
 
-		for (auto p : allPassengers) {
-			if (p->getArrivalTime() == currentTime)
-				building->addWaitingPassenger(p);
-		}
+void Scheduler::tick() {
+    for (auto p : allPassengers)
+        if (p->getArrivalTime() == currentTime)
+            building->addWaitingPassenger(p);
 
-		assignElevator();
-		moveElevator();
+    unboardPassengers();
 
-		boardPassengers();
-		unboardPassengers();
+    boardPassengers();
 
-		building->logState(currentTime, logger);
-	}
+    assignElevator();
 
-	void Scheduler::assignElevator() {
-		auto& waitingMap = building->getWaitingPassengers();
-		std::set<int> assignedIds;
+    moveElevator();
 
-		for (auto it = waitingMap.begin(); it != waitingMap.end(); ++it) {
-			int floor = it->first;
-			auto& passengers = it->second;
+    building->logState(currentTime, logger);
+}
 
-			if (passengers.empty()) continue;
+void Scheduler::assignElevator() {
+    auto& waitingMap = building->getWaitingPassengers();
 
-			Elevator* best = nullptr;
-			int minDist = INT_MAX;
+    for (auto& [floor, lst] : waitingMap) {
+        if (lst.empty()) continue;
 
-			for (auto& el : building->getElevators()) {
-				if (assignedIds.count(el.getId())) continue;
-				if (el.getPassengerCount() > 0) continue;      
+        bool alreadyCovered = false;
+        for (auto& el : building->getElevators()) {
+            if (el.getStops().count(floor)) {
+                alreadyCovered = true;
+                break;
+            }
+            if (el.getMovingState() == 0 && el.getCurrentFloor() == floor) {
+                alreadyCovered = true;
+                break;
+            }
+        }
+        if (alreadyCovered) continue;
 
-				int dist = abs(el.getCurrentFloor() - floor);
-				if (dist < minDist) {
-					minDist = dist;
-					best = &el;
-				}
-			}
+        int passengerDir = (lst.front()->getDestinationFloor() > floor) ? 1 : -1;
 
-			if (best != nullptr && best->getCurrentFloor() != floor) {
-				best->setTargetFloor(floor);
-				best->setMovingState(best->getCurrentFloor() < floor ? 1 : -1);
-				assignedIds.insert(best->getId());
-			}
-		}
-	}
+        Elevator* best = nullptr;
+        int minDist = INT_MAX;
 
-	void Scheduler::moveElevator() {
-		for (auto& el : building->getElevators()) {
-			if (el.getMovingState() != 0) {
-				el.move();
-			}
-			else {
-				el.setMovingState(0);
-			}
-		}
-	}
+        for (auto& el : building->getElevators()) {
+            if (el.getPassengerCount() >= Elevator::MAX_CAPACITY) continue;
+            int elDir = el.getMovingState();
+            if (elDir == 0) continue;
 
-	void Scheduler::boardPassengers() {
-		for (auto& e : building->getElevators()) {
-			auto& waiting = building->getWaitingPassengers()[e.getCurrentFloor()];
-			while (!waiting.empty()) {
-				Passenger* p = waiting.front();
-				bool hasBoarded=e.board(p);
-				if (!hasBoarded)
-					break;
-				waiting.pop();
-				p->setBoardTime(currentTime);
+            if (elDir == 1 && el.getCurrentFloor() >= floor) continue;
+            if (elDir == -1 && el.getCurrentFloor() <= floor) continue;
 
-				int dest = p->getDestinationFloor();
-				e.setTargetFloor(dest);
-				if (e.getCurrentFloor() < dest)
-					e.setMovingState(1);
-				else
-					e.setMovingState(-1);
+            if (elDir != passengerDir) continue;
 
-				logger->log("[Time: " + to_string(currentTime) + "] Passenger " + to_string(p->getId())
-					+ " boarded elevator " + to_string(e.getId()));
-			}
-		}
-	}
+            int dist = abs(el.getCurrentFloor() - floor);
+            if (dist < minDist) {
+                minDist = dist;
+                best = &el;
+            }
+        }
 
-	void Scheduler::unboardPassengers() {
-		for (auto& e : building->getElevators()) {
-			vector<Passenger*> exited = e.unboard();
-			for (auto p : exited) {
-				p->setDropOffTime(currentTime);
-				logger->log("[Time: " + to_string(currentTime) + "] Passenger " + to_string(p->getId())
-					+ " unboarded at floor " + to_string(e.getCurrentFloor()));
-			}
-		}
-	}
+        if (best == nullptr) {
+            minDist = INT_MAX;
+            for (auto& el : building->getElevators()) {
+                if (el.getMovingState() != 0) continue;
+                if (el.getPassengerCount() > 0) continue;
+                if (el.hasStops()) continue;
 
-	void Scheduler::printStats() {
-		int totalWait = 0, maxWait = 0, served=0;
-		for (auto p : allPassengers) {
-			if (p->getDropOffTime() == -1)
-				continue;
-			int wait = p->getDropOffTime() - p->getArrivalTime();
-			totalWait += wait;
-			maxWait = std::max(maxWait, wait);
-			served++;
-		}
-		logger->log("=== SIMULATION COMPLETE ===");
-		logger->log("Passengers served: " + std::to_string(served));
-		logger->log("Passengers unserved: " + std::to_string(allPassengers.size()-served));
-		logger->log("Average wait time: " + std::to_string(totalWait / (int)allPassengers.size()) + " ticks");
-		logger->log("Maximum wait time: " + std::to_string(maxWait) + " ticks");
-		logger->log("Total ticks: " + std::to_string(currentTime));
-	}
+                int dist = abs(el.getCurrentFloor() - floor);
+                if (dist < minDist) {
+                    minDist = dist;
+                    best = &el;
+                }
+            }
+        }
 
+        if (best == nullptr) continue;
 
+        if (best->getCurrentFloor() != floor)
+            best->addStop(floor);
+    }
+}
+
+void Scheduler::moveElevator() {
+    for (auto& el : building->getElevators())
+        if (el.getMovingState() != 0)
+            el.move();
+}
+
+void Scheduler::boardPassengers() {
+    for (auto& e : building->getElevators()) {
+        if (e.getMovingState() != 0) continue;
+
+        auto& waiting = building->getWaitingPassengers()[e.getCurrentFloor()];
+        if (waiting.empty()) continue;
+
+        int elevDir = e.getMovingState();
+
+        auto it = waiting.begin();
+        while (it != waiting.end()) {
+            Passenger* p = *it;
+            if (e.getPassengerCount() > 0) {
+                int nextStop = e.getNextStop();
+                int liftDir = (nextStop > e.getCurrentFloor()) ? 1 : -1;
+                int pDir = (p->getDestinationFloor() > e.getCurrentFloor()) ? 1 : -1;
+                if (pDir != liftDir) {
+                    ++it;
+                    continue;
+                }
+            }
+
+            bool hasBoarded = e.board(p);
+            if (!hasBoarded) break;
+
+            it = waiting.erase(it); 
+            p->setBoardTime(currentTime);
+            e.addStop(p->getDestinationFloor());
+
+            logger->log("[Time: " + to_string(currentTime) + "] Passenger "
+                + to_string(p->getId()) + " boarded elevator " + to_string(e.getId()));
+        }
+    }
+}
+
+void Scheduler::unboardPassengers() {
+    for (auto& e : building->getElevators()) {
+        vector<Passenger*> exited = e.unboard();
+        for (auto p : exited) {
+            p->setDropOffTime(currentTime);
+            logger->log("[Time: " + to_string(currentTime) + "] Passenger "
+                + to_string(p->getId()) + " unboarded at floor "
+                + to_string(e.getCurrentFloor()));
+        }
+    }
+}
+
+void Scheduler::printStats() {
+    int totalWait = 0, maxWait = 0, served = 0;
+    for (auto p : allPassengers) {
+        if (p->getDropOffTime() == -1) continue;
+        int wait = p->getDropOffTime() - p->getArrivalTime();
+        totalWait += wait;
+        maxWait = std::max(maxWait, wait);
+        served++;
+    }
+    int unserved = (int)allPassengers.size() - served;
+
+    logger->log("\n=== SIMULATION COMPLETE ===");
+    logger->log("Passengers served: " + std::to_string(served));
+    if (unserved > 0)
+        logger->log("Passengers unserved (not reached in time): "
+            + std::to_string(unserved));
+    if (served > 0) {
+        logger->log("Average wait time: "
+            + std::to_string(totalWait / served) + " ticks");
+        logger->log("Maximum wait time: "
+            + std::to_string(maxWait) + " ticks");
+    }
+    logger->log("Total ticks: " + std::to_string(currentTime));
+}
