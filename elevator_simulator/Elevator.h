@@ -11,6 +11,8 @@ private:
     int targetFloor;
     int movingState;
     int MAX_CAPACITY;
+    int totalFloorsTraveled;
+    int busyTicks;
 
     std::vector<Passenger*> passengers;
     std::set<int> stops;
@@ -41,5 +43,7 @@ public:
     int getTargetFloor();
 
     int getCapacity();
+    int getTotalFloorsTraveled();
+    int getBusyTicks();
 
 };

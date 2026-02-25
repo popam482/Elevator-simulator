@@ -11,7 +11,8 @@ Elevator::Elevator(int id, int currentFloor, int targetFloor, int maxCap) {
     this->currentFloor = currentFloor;
     this->targetFloor = targetFloor;
     this->MAX_CAPACITY = maxCap;
-
+    busyTicks = 0;
+    totalFloorsTraveled = 0;
     this->movingState = 0;
 }
 
@@ -34,6 +35,8 @@ void Elevator::move() {
     else {
         updateDirection();
     }
+    totalFloorsTraveled++;
+    busyTicks++;
 }
 
 bool Elevator::board(Passenger* p) {
@@ -137,4 +140,12 @@ set<int>& Elevator::getStops(){
 
 int Elevator::getCapacity() {
     return MAX_CAPACITY;
+}
+
+int Elevator::getBusyTicks() {
+    return busyTicks;
+}
+
+int Elevator::getTotalFloorsTraveled() {
+    return totalFloorsTraveled;
 }

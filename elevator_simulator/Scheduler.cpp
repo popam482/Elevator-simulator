@@ -164,15 +164,24 @@ void Scheduler::unboardPassengers() {
 }
 
 void Scheduler::printStats() {
-    int totalWait = 0, maxWait = 0, served = 0;
+    int totalWait = 0, maxWait = 0, served = 0, totalRide=0;
     for (auto p : allPassengers) {
         if (p->getDropOffTime() == -1) continue;
         int wait = p->getDropOffTime() - p->getArrivalTime();
         totalWait += wait;
         maxWait = std::max(maxWait, wait);
+        if (p->getBoardTime() != -1) {
+            int ride = p->getDropOffTime() - p->getBoardTime();
+            totalRide += ride;
+        }
         served++;
     }
     int unserved = (int)allPassengers.size() - served;
+
+    int totalDistance = 0;
+    for (auto& e : building->getElevators())
+        totalDistance += e.getTotalFloorsTraveled();
+
 
     logger->log("\n=== SIMULATION COMPLETE ===");
     logger->log("Passengers served: " + std::to_string(served));
@@ -184,6 +193,25 @@ void Scheduler::printStats() {
             + std::to_string(totalWait / served) + " ticks");
         logger->log("Maximum wait time: "
             + std::to_string(maxWait) + " ticks");
+        logger->log("Average ride time: "
+            + std::to_string(totalRide / served) + " ticks");
     }
+
+    std::string utilLine = "Elevator utilization: ";
+    bool first = true;
+    for (auto& e : building->getElevators()) {
+        int util = (currentTime > 0)
+            ? (e.getBusyTicks() * 100 / currentTime)
+            : 0;
+        if (!first) utilLine += " ";
+        utilLine += "E" + std::to_string(e.getId()) +
+            "=" + std::to_string(util) + "%";
+        first = false;
+    }
+
+    logger->log("Total distance traveled: " +
+        std::to_string(totalDistance) + " floors");
+
+    logger->log(utilLine);
     logger->log("Total ticks: " + std::to_string(currentTime));
 }
