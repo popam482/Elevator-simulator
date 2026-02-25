@@ -6,10 +6,12 @@
 #include <cstdlib>
 using namespace std;
 
-Elevator::Elevator(int id, int currentFloor, int targetFloor) {
+Elevator::Elevator(int id, int currentFloor, int targetFloor, int maxCap) {
     this->id = id;
     this->currentFloor = currentFloor;
     this->targetFloor = targetFloor;
+    this->MAX_CAPACITY = maxCap;
+
     this->movingState = 0;
 }
 
@@ -78,11 +80,11 @@ void Elevator::removeStop(int floor) {
     stops.erase(floor);
 }
 
-bool Elevator::hasStops() const {
+bool Elevator::hasStops(){
     return !stops.empty();
 }
 
-int Elevator::getNextStop() const {
+int Elevator::getNextStop(){
     if (stops.empty()) return currentFloor;
 
     if (movingState == 1) {
@@ -129,6 +131,10 @@ void Elevator::setTargetFloor(int floor) {
 
 int Elevator::getTargetFloor() { return targetFloor; }
 
-const set<int>& Elevator::getStops() const {
+set<int>& Elevator::getStops(){
     return stops;
+}
+
+int Elevator::getCapacity() {
+    return MAX_CAPACITY;
 }

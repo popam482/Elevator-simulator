@@ -38,13 +38,13 @@ void Scheduler::tick() {
         if (p->getArrivalTime() == currentTime)
             building->addWaitingPassenger(p);
 
-    unboardPassengers();
-
-    boardPassengers();
-
     assignElevator();
 
     moveElevator();
+
+    unboardPassengers();
+
+    boardPassengers();
 
     building->logState(currentTime, logger);
 }
@@ -52,8 +52,8 @@ void Scheduler::tick() {
 void Scheduler::assignElevator() {
     auto& waitingMap = building->getWaitingPassengers();
 
-    for (auto& [floor, lst] : waitingMap) {
-        if (lst.empty()) continue;
+    for (auto& [floor, q] : waitingMap) {
+        if (q.empty()) continue;
 
         bool alreadyCovered = false;
         for (auto& el : building->getElevators()) {
@@ -61,54 +61,53 @@ void Scheduler::assignElevator() {
                 alreadyCovered = true;
                 break;
             }
-            if (el.getMovingState() == 0 && el.getCurrentFloor() == floor) {
-                alreadyCovered = true;
-                break;
-            }
         }
         if (alreadyCovered) continue;
 
-        int passengerDir = (lst.front()->getDestinationFloor() > floor) ? 1 : -1;
+        int passengerDir = (q.front()->getDestinationFloor() > floor) ? 1 : -1;
 
         Elevator* best = nullptr;
-        int minDist = INT_MAX;
+        int minCost = INT_MAX;
 
         for (auto& el : building->getElevators()) {
-            if (el.getPassengerCount() >= Elevator::MAX_CAPACITY) continue;
-            int elDir = el.getMovingState();
-            if (elDir == 0) continue;
+            if (el.getPassengerCount() >= el.getCapacity()) continue;
 
-            if (elDir == 1 && el.getCurrentFloor() >= floor) continue;
-            if (elDir == -1 && el.getCurrentFloor() <= floor) continue;
+            int cost = INT_MAX;
+            int state = el.getMovingState();
+            int pos = el.getCurrentFloor();
 
-            if (elDir != passengerDir) continue;
+            if (state == 0) {
+                cost = abs(pos - floor);
+            }
+            else if (state == passengerDir) {
+                bool notPassed = (state == 1 && pos <= floor) ||
+                    (state == -1 && pos >= floor);
+                if (notPassed) {
+                    cost = abs(pos - floor); 
+                }
+            }
 
-            int dist = abs(el.getCurrentFloor() - floor);
-            if (dist < minDist) {
-                minDist = dist;
+            if (cost < minCost) {
+                minCost = cost;
                 best = &el;
             }
         }
 
         if (best == nullptr) {
-            minDist = INT_MAX;
             for (auto& el : building->getElevators()) {
                 if (el.getMovingState() != 0) continue;
                 if (el.getPassengerCount() > 0) continue;
-                if (el.hasStops()) continue;
-
-                int dist = abs(el.getCurrentFloor() - floor);
-                if (dist < minDist) {
-                    minDist = dist;
+                int cost = abs(el.getCurrentFloor() - floor);
+                if (cost < minCost) {
+                    minCost = cost;
                     best = &el;
                 }
             }
         }
 
-        if (best == nullptr) continue;
-
-        if (best->getCurrentFloor() != floor)
+        if (best != nullptr && best->getCurrentFloor() != floor) {
             best->addStop(floor);
+        }
     }
 }
 
@@ -120,39 +119,38 @@ void Scheduler::moveElevator() {
 
 void Scheduler::boardPassengers() {
     for (auto& e : building->getElevators()) {
-        if (e.getMovingState() != 0) continue;
-
         auto& waiting = building->getWaitingPassengers()[e.getCurrentFloor()];
         if (waiting.empty()) continue;
 
         int elevDir = e.getMovingState();
 
-        auto it = waiting.begin();
-        while (it != waiting.end()) {
+        for (auto it = waiting.begin(); it != waiting.end(); ) {
+            if (e.getPassengerCount() >= e.getCapacity()) break;
+
             Passenger* p = *it;
-            if (e.getPassengerCount() > 0) {
-                int nextStop = e.getNextStop();
-                int liftDir = (nextStop > e.getCurrentFloor()) ? 1 : -1;
-                int pDir = (p->getDestinationFloor() > e.getCurrentFloor()) ? 1 : -1;
-                if (pDir != liftDir) {
-                    ++it;
-                    continue;
-                }
+            int pDir = (p->getDestinationFloor() > e.getCurrentFloor()) ? 1 : -1;
+
+            bool compatible = (elevDir == 0) || (pDir == elevDir);
+            if (!compatible) {
+                ++it;
+                continue; 
             }
 
-            bool hasBoarded = e.board(p);
-            if (!hasBoarded) break;
+            if (!e.board(p)) break; 
 
             it = waiting.erase(it); 
             p->setBoardTime(currentTime);
             e.addStop(p->getDestinationFloor());
+
+            if (elevDir == 0) {
+                elevDir = pDir;
+            }
 
             logger->log("[Time: " + to_string(currentTime) + "] Passenger "
                 + to_string(p->getId()) + " boarded elevator " + to_string(e.getId()));
         }
     }
 }
-
 void Scheduler::unboardPassengers() {
     for (auto& e : building->getElevators()) {
         vector<Passenger*> exited = e.unboard();

@@ -1,15 +1,74 @@
 ﻿
-FLOORS=10
-ELEVATORS=3
+FLOORS=30
+ELEVATORS=5
+CAPACITY=4
+MAX_TIME=1500
 
 PASSENGERS
 
-id=1 start=1 dest=10 arrival=0
-id=2 start=2 dest=3 arrival=0
-id=3 start=5 dest=6 arrival=0
-id=4 start=3 dest=4 arrival=0
-id=5 start=5 dest=3 arrival=1
-id=6 start=3 dest=2 arrival=1
-id=7 start=9 dest=7 arrival=0
-id=8 start=1 dest=5 arrival=0
+id=1  start=1  dest=20 arrival=0
+id=2  start=1  dest=25 arrival=0
+id=3  start=2  dest=22 arrival=0
+id=4  start=3  dest=18 arrival=0
+id=5  start=1  dest=30 arrival=1
+id=6  start=4  dest=27 arrival=1
+id=7  start=2  dest=21 arrival=1
+id=8  start=3  dest=24 arrival=2
+id=9  start=1  dest=19 arrival=2
+id=10 start=5  dest=28 arrival=2
 
+id=11 start=10 dest=3  arrival=3
+id=12 start=12 dest=5  arrival=3
+id=13 start=14 dest=7  arrival=4
+id=14 start=15 dest=6  arrival=4
+id=15 start=16 dest=8  arrival=4
+id=16 start=18 dest=10 arrival=5
+id=17 start=20 dest=12 arrival=5
+id=18 start=22 dest=9  arrival=5
+
+id=19 start=6  dest=26 arrival=6
+id=20 start=7  dest=29 arrival=6
+id=21 start=8  dest=23 arrival=7
+id=22 start=9  dest=27 arrival=7
+id=23 start=10 dest=30 arrival=7
+
+id=24 start=30 dest=1  arrival=8
+id=25 start=29 dest=2  arrival=8
+id=26 start=28 dest=3  arrival=9
+id=27 start=27 dest=4  arrival=9
+id=28 start=26 dest=5  arrival=9
+id=29 start=25 dest=6  arrival=10
+id=30 start=24 dest=7  arrival=10
+
+id=31 start=2  dest=18 arrival=11
+id=32 start=3  dest=22 arrival=12
+id=33 start=4  dest=20 arrival=13
+id=34 start=5  dest=24 arrival=14
+id=35 start=6  dest=21 arrival=15
+id=36 start=7  dest=26 arrival=16
+id=37 start=8  dest=23 arrival=17
+id=38 start=9  dest=28 arrival=18
+id=39 start=10 dest=25 arrival=19
+id=40 start=11 dest=27 arrival=20
+
+id=41 start=27 dest=10 arrival=21
+id=42 start=26 dest=9  arrival=22
+id=43 start=25 dest=8  arrival=23
+id=44 start=24 dest=7  arrival=24
+id=45 start=23 dest=6  arrival=25
+id=46 start=22 dest=5  arrival=26
+id=47 start=21 dest=4  arrival=27
+id=48 start=20 dest=3  arrival=28
+id=49 start=19 dest=2  arrival=29
+id=50 start=18 dest=1  arrival=30
+
+id=51 start=1  dest=15 arrival=40
+id=52 start=5  dest=2  arrival=45
+id=53 start=10 dest=30 arrival=50
+id=54 start=30 dest=10 arrival=55
+id=55 start=15 dest=1  arrival=60
+id=56 start=20 dest=5  arrival=65
+id=57 start=25 dest=3  arrival=70
+id=58 start=8  dest=29 arrival=75
+id=59 start=12 dest=4  arrival=80
+id=60 start=18 dest=27 arrival=85

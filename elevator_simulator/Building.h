@@ -14,7 +14,7 @@ private:
     std::map<int, std::list<Passenger*>> waitingPassengers; 
 
 public:
-    Building(int floors, int elevatorsNum, int initialTargetFloor = 1);
+    Building(int floors, int elevatorsNum, int maxCap, int initialTargetFloor = 1);
 
     void addWaitingPassenger(Passenger* p);
     void logState(int currentTime, Logger* logger);

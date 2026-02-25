@@ -4,10 +4,20 @@
 #include "Passenger.h"
 
 class Elevator {
-public:
-    static const int MAX_CAPACITY = 10;
 
-    Elevator(int id, int currentFloor, int targetFloor);
+private:
+    int id;
+    int currentFloor;
+    int targetFloor;
+    int movingState;
+    int MAX_CAPACITY;
+
+    std::vector<Passenger*> passengers;
+    std::set<int> stops;
+
+public:
+
+    Elevator(int id, int currentFloor, int targetFloor, int maxCap);
 
     void move();
     bool board(Passenger* p);
@@ -22,20 +32,14 @@ public:
 
     void addStop(int floor);
     void removeStop(int floor);
-    bool hasStops() const;
-    int getNextStop() const;      
-    void updateDirection();       
-    const std::set<int>& getStops() const;
+    bool hasStops();
+    int getNextStop();
+    void updateDirection();
+    std::set<int>& getStops();
 
     void setTargetFloor(int floor);
     int getTargetFloor();
 
-private:
-    int id;
-    int currentFloor;
-    int targetFloor;
-    int movingState;
+    int getCapacity();
 
-    std::vector<Passenger*> passengers;
-    std::set<int> stops;
 };

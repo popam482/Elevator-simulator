@@ -8,10 +8,10 @@
 
 using namespace std;
 
-Building::Building(int floors, int elevatorsNum, int initialTargetFloor) {
+Building::Building(int floors, int elevatorsNum, int maxCap, int initialTargetFloor) {
     this->floors = floors;
     for (int i = 0; i < elevatorsNum; i++)
-        elevators.emplace_back(i + 1, 1, initialTargetFloor);
+        elevators.emplace_back(i + 1, 1, initialTargetFloor, maxCap);
 }
 
 void Building::addWaitingPassenger(Passenger* p) {

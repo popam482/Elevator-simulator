@@ -31,6 +31,8 @@ int main(int argc, char* argv[]) {
 
 	int floors = 0;
 	int elevators = 0;
+	int maxTime = 0;
+	int maxCapacity = 0;
 	vector<Passenger*> passengers;
 	string line;
 	bool readingPassengers = false;
@@ -46,6 +48,13 @@ int main(int argc, char* argv[]) {
 		else if (line.find("ELEVATORS=") == 0) {
 			elevators = stoi(line.substr(10));
 		}
+		else if (line.find("CAPACITY=") == 0) {
+			maxCapacity = stoi(line.substr(9));
+		}
+		else if (line.find("MAX_TIME=") == 0) {
+			maxTime = stoi(line.substr(9));
+		}
+
 		else if (line.find("PASSENGERS") == 0) {
 			readingPassengers = true;
 			continue;
@@ -89,9 +98,11 @@ int main(int argc, char* argv[]) {
 	cout << "Floors: " << floors << endl;
 	cout << "Elevators: " << elevators << endl;
 	cout << "Passengers: " << passengers.size() << endl;
+	cout << "Capacity/elevator: " << maxCapacity << endl;
+	cout << "Maximum simulation time: " << maxTime << endl;
 	cout << "=========================" << endl << endl;
 
-	Building* building = new Building(floors, elevators);
+	Building* building = new Building(floors, elevators, maxCapacity);
 
 	cout << "Choose output mode:" << endl;
 	cout << "1 for file (logs/simulation.log)" << endl;
@@ -111,14 +122,6 @@ int main(int argc, char* argv[]) {
 		chosenLogger = new ConsoleLogger();
 
 	Scheduler scheduler(building, passengers, chosenLogger);
-	
-	int maxTime = 0;
-	for (auto p : passengers) {
-		int estimated = p->getArrivalTime() + (floors * 2) + 50;
-		if (estimated > maxTime) maxTime = estimated;
-	}
-	if (maxTime < 300) maxTime = 1000; 
-
 
 	cout << "\nRunning simulation (max time: " << maxTime << " units)" << endl;
 	scheduler.runSimulation(maxTime);
