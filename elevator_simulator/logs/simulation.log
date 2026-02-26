@@ -1,0 +1,238 @@
+[Time: 0] Passenger 3 boarded elevator 1
+[Time: 0] Passenger 1 boarded elevator 2
+[Time: 0] Passenger 2 boarded elevator 2
+[00]Elevator 1 moving up (floor 2) | Elevator 2 moving up (floor 1)
+[Time: 1] Passenger 4 boarded elevator 1
+[Time: 1] Passenger 7 boarded elevator 2
+[Time: 1] Passenger 5 boarded elevator 3
+[01]Elevator 1 moving up (floor 3) | Elevator 2 moving up (floor 2) | Elevator 3 moving up (floor 1)
+[Time: 2] Passenger 6 boarded elevator 1
+[Time: 2] Passenger 8 boarded elevator 2
+[Time: 2] Passenger 9 boarded elevator 4
+[02]Elevator 1 moving up (floor 4) | Elevator 2 moving up (floor 3) | Elevator 3 moving up (floor 2) | Elevator 4 moving up (floor 1)
+[Time: 3] Passenger 10 boarded elevator 1
+[03]Elevator 1 moving up (floor 5) | Elevator 2 moving up (floor 4) | Elevator 3 moving up (floor 3) | Elevator 4 moving up (floor 2) | Elevator 5 moving up (floor 2)
+[04]Elevator 1 moving up (floor 6) | Elevator 2 moving up (floor 5) | Elevator 3 moving up (floor 4) | Elevator 4 moving up (floor 3) | Elevator 5 moving up (floor 3)
+[05]Elevator 1 moving up (floor 7) | Elevator 2 moving up (floor 6) | Elevator 3 moving up (floor 5) | Elevator 4 moving up (floor 4) | Elevator 5 moving up (floor 4)
+[Time: 6] Passenger 19 boarded elevator 3
+[06]Elevator 1 moving up (floor 8) | Elevator 2 moving up (floor 7) | Elevator 3 moving up (floor 6) | Elevator 4 moving up (floor 5) | Elevator 5 moving up (floor 5)
+[Time: 7] Passenger 20 boarded elevator 3
+[07]Elevator 1 moving up (floor 9) | Elevator 2 moving up (floor 8) | Elevator 3 moving up (floor 7) | Elevator 4 moving up (floor 6) | Elevator 5 moving up (floor 6)
+[Time: 8] Passenger 21 boarded elevator 3
+[08]Elevator 1 moving up (floor 10) | Elevator 2 moving up (floor 9) | Elevator 3 moving up (floor 8) | Elevator 4 moving up (floor 7) | Elevator 5 moving up (floor 7)
+[09]Elevator 1 moving up (floor 11) | Elevator 2 moving up (floor 10) | Elevator 3 moving up (floor 9) | Elevator 4 moving up (floor 8) | Elevator 5 moving up (floor 8)
+[Time: 10] Passenger 22 boarded elevator 4
+[10]Elevator 1 moving up (floor 12) | Elevator 2 moving up (floor 11) | Elevator 3 moving up (floor 10) | Elevator 4 moving up (floor 9) | Elevator 5 moving up (floor 9)
+[Time: 11] Passenger 23 boarded elevator 4
+[Time: 11] Passenger 11 boarded elevator 5
+[11]Elevator 1 moving up (floor 13) | Elevator 2 moving up (floor 12) | Elevator 3 moving up (floor 11) | Elevator 4 moving up (floor 10) | Elevator 5 moving down (floor 10)
+[12]Elevator 1 moving up (floor 14) | Elevator 2 moving up (floor 13) | Elevator 3 moving up (floor 12) | Elevator 4 moving up (floor 11) | Elevator 5 moving down (floor 9)
+[13]Elevator 1 moving up (floor 15) | Elevator 2 moving up (floor 14) | Elevator 3 moving up (floor 13) | Elevator 4 moving up (floor 12) | Elevator 5 moving down (floor 8)
+[14]Elevator 1 moving up (floor 16) | Elevator 2 moving up (floor 15) | Elevator 3 moving up (floor 14) | Elevator 4 moving up (floor 13) | Elevator 5 moving down (floor 7)
+[15]Elevator 1 moving up (floor 17) | Elevator 2 moving up (floor 16) | Elevator 3 moving up (floor 15) | Elevator 4 moving up (floor 14) | Elevator 5 moving down (floor 6)
+[Time: 16] Passenger 4 unboarded at floor 18
+[16]Elevator 1 moving up (floor 18) | Elevator 2 moving up (floor 17) | Elevator 3 moving up (floor 16) | Elevator 4 moving up (floor 15) | Elevator 5 moving down (floor 5)
+[17]Elevator 1 moving up (floor 19) | Elevator 2 moving up (floor 18) | Elevator 3 moving up (floor 17) | Elevator 4 moving up (floor 16) | Elevator 5 moving down (floor 4)
+[Time: 18] Passenger 11 unboarded at floor 3
+[Time: 18] Passenger 32 boarded elevator 5
+[18]Elevator 1 moving up (floor 20) | Elevator 2 moving up (floor 19) | Elevator 3 moving up (floor 18) | Elevator 4 moving up (floor 17) | Elevator 5 moving up (floor 3)
+[Time: 19] Passenger 1 unboarded at floor 20
+[Time: 19] Passenger 33 boarded elevator 5
+[19]Elevator 1 moving up (floor 21) | Elevator 2 moving up (floor 20) | Elevator 3 moving up (floor 19) | Elevator 4 moving up (floor 18) | Elevator 5 moving up (floor 4)
+[Time: 20] Passenger 3 unboarded at floor 22
+[Time: 20] Passenger 7 unboarded at floor 21
+[Time: 20] Passenger 9 unboarded at floor 19
+[Time: 20] Passenger 34 boarded elevator 5
+[20]Elevator 1 moving up (floor 22) | Elevator 2 moving up (floor 21) | Elevator 3 moving up (floor 20) | Elevator 4 moving up (floor 19) | Elevator 5 moving up (floor 5)
+[Time: 21] Passenger 35 boarded elevator 5
+[21]Elevator 1 moving up (floor 23) | Elevator 2 moving up (floor 22) | Elevator 3 moving up (floor 21) | Elevator 4 moving up (floor 20) | Elevator 5 moving up (floor 6)
+[22]Elevator 1 moving up (floor 24) | Elevator 2 moving up (floor 23) | Elevator 3 moving up (floor 22) | Elevator 4 moving up (floor 21) | Elevator 5 moving up (floor 7)
+[Time: 23] Passenger 8 unboarded at floor 24
+[Time: 23] Passenger 21 unboarded at floor 23
+[23]Elevator 1 moving up (floor 25) | Elevator 2 moving up (floor 24) | Elevator 3 moving up (floor 23) | Elevator 4 moving up (floor 22) | Elevator 5 moving up (floor 8)
+[Time: 24] Passenger 2 unboarded at floor 25
+[Time: 24] Passenger 29 boarded elevator 2
+[Time: 24] Passenger 43 boarded elevator 2
+[24]Elevator 1 moving up (floor 26) | Elevator 2 moving down (floor 25) | Elevator 3 moving up (floor 24) | Elevator 4 moving up (floor 23) | Elevator 5 moving up (floor 9)
+[Time: 25] Passenger 6 unboarded at floor 27
+[Time: 25] Passenger 30 boarded elevator 2
+[Time: 25] Passenger 44 boarded elevator 2
+[25]Elevator 1 moving up (floor 27) | Elevator 2 moving down (floor 24) | Elevator 3 moving up (floor 25) | Elevator 4 moving up (floor 24) | Elevator 5 moving up (floor 10)
+[Time: 26] Passenger 10 unboarded at floor 28
+[Time: 26] Passenger 19 unboarded at floor 26
+[Time: 26] Passenger 26 boarded elevator 1
+[26]Elevator 1 moving down (floor 28) | Elevator 2 moving down (floor 23) | Elevator 3 moving up (floor 26) | Elevator 4 moving up (floor 25) | Elevator 5 moving up (floor 11)
+[Time: 27] Passenger 27 boarded elevator 1
+[Time: 27] Passenger 41 boarded elevator 1
+[27]Elevator 1 moving down (floor 27) | Elevator 2 moving down (floor 22) | Elevator 3 moving up (floor 27) | Elevator 4 moving up (floor 26) | Elevator 5 moving up (floor 12)
+[Time: 28] Passenger 22 unboarded at floor 27
+[Time: 28] Passenger 28 boarded elevator 1
+[28]Elevator 1 moving down (floor 26) | Elevator 2 moving down (floor 21) | Elevator 3 moving up (floor 28) | Elevator 4 moving up (floor 27) | Elevator 5 moving up (floor 13)
+[Time: 29] Passenger 20 unboarded at floor 29
+[29]Elevator 1 moving down (floor 25) | Elevator 2 moving down (floor 20) | Elevator 3 moving up (floor 29) | Elevator 4 moving up (floor 28) | Elevator 5 moving up (floor 14)
+[Time: 30] Passenger 5 unboarded at floor 30
+[Time: 30] Passenger 24 boarded elevator 3
+[30]Elevator 1 moving down (floor 24) | Elevator 2 moving down (floor 19) | Elevator 3 moving down (floor 30) | Elevator 4 moving up (floor 29) | Elevator 5 moving up (floor 15)
+[Time: 31] Passenger 23 unboarded at floor 30
+[Time: 31] Passenger 25 boarded elevator 3
+[31]Elevator 1 moving down (floor 23) | Elevator 2 moving down (floor 18) | Elevator 3 moving down (floor 29) | Elevator 5 moving up (floor 16)
+[32]Elevator 1 moving down (floor 22) | Elevator 2 moving down (floor 17) | Elevator 3 moving down (floor 28) | Elevator 4 moving down (floor 29) | Elevator 5 moving up (floor 17)
+[33]Elevator 1 moving down (floor 21) | Elevator 2 moving down (floor 16) | Elevator 3 moving down (floor 27) | Elevator 4 moving down (floor 28) | Elevator 5 moving up (floor 18)
+[Time: 34] Passenger 42 boarded elevator 3
+[34]Elevator 1 moving down (floor 20) | Elevator 2 moving down (floor 15) | Elevator 3 moving down (floor 26) | Elevator 4 moving down (floor 27) | Elevator 5 moving up (floor 19)
+[Time: 35] Passenger 33 unboarded at floor 20
+[35]Elevator 1 moving down (floor 19) | Elevator 2 moving down (floor 14) | Elevator 3 moving down (floor 25) | Elevator 4 moving down (floor 26) | Elevator 5 moving up (floor 20)
+[Time: 36] Passenger 35 unboarded at floor 21
+[36]Elevator 1 moving down (floor 18) | Elevator 2 moving down (floor 13) | Elevator 3 moving down (floor 24) | Elevator 4 moving down (floor 25) | Elevator 5 moving up (floor 21)
+[Time: 37] Passenger 32 unboarded at floor 22
+[Time: 37] Passenger 45 boarded elevator 3
+[37]Elevator 1 moving down (floor 17) | Elevator 2 moving down (floor 12) | Elevator 3 moving down (floor 23) | Elevator 4 moving down (floor 24) | Elevator 5 moving up (floor 22)
+[38]Elevator 1 moving down (floor 16) | Elevator 2 moving down (floor 11) | Elevator 3 moving down (floor 22) | Elevator 4 moving down (floor 23) | Elevator 5 moving up (floor 23)
+[Time: 39] Passenger 34 unboarded at floor 24
+[Time: 39] Passenger 18 boarded elevator 4
+[Time: 39] Passenger 46 boarded elevator 4
+[39]Elevator 1 moving down (floor 15) | Elevator 2 moving down (floor 10) | Elevator 3 moving down (floor 21) | Elevator 4 moving down (floor 22)
+[Time: 40] Passenger 47 boarded elevator 4
+[40]Elevator 1 moving down (floor 14) | Elevator 2 moving down (floor 9) | Elevator 3 moving down (floor 20) | Elevator 4 moving down (floor 21) | Elevator 5 moving down (floor 23)
+[Time: 41] Passenger 43 unboarded at floor 8
+[Time: 41] Passenger 17 boarded elevator 4
+[41]Elevator 1 moving down (floor 13) | Elevator 2 moving down (floor 8) | Elevator 3 moving down (floor 19) | Elevator 4 moving down (floor 20) | Elevator 5 moving down (floor 22)
+[Time: 42] Passenger 30 unboarded at floor 7
+[Time: 42] Passenger 44 unboarded at floor 7
+[42]Elevator 1 moving down (floor 12) | Elevator 2 moving down (floor 7) | Elevator 3 moving down (floor 18) | Elevator 4 moving down (floor 19) | Elevator 5 moving down (floor 21)
+[Time: 43] Passenger 29 unboarded at floor 6
+[Time: 43] Passenger 48 boarded elevator 5
+[43]Elevator 1 moving down (floor 11) | Elevator 3 moving down (floor 17) | Elevator 4 moving down (floor 18) | Elevator 5 moving down (floor 20)
+[Time: 44] Passenger 41 unboarded at floor 10
+[Time: 44] Passenger 36 boarded elevator 2
+[Time: 44] Passenger 49 boarded elevator 5
+[44]Elevator 1 moving down (floor 10) | Elevator 2 moving up (floor 7) | Elevator 3 moving down (floor 16) | Elevator 4 moving down (floor 17) | Elevator 5 moving down (floor 19)
+[Time: 45] Passenger 37 boarded elevator 2
+[Time: 45] Passenger 16 boarded elevator 5
+[Time: 45] Passenger 50 boarded elevator 5
+[45]Elevator 1 moving down (floor 9) | Elevator 2 moving up (floor 8) | Elevator 3 moving down (floor 15) | Elevator 4 moving down (floor 16) | Elevator 5 moving down (floor 18)
+[Time: 46] Passenger 38 boarded elevator 2
+[46]Elevator 1 moving down (floor 8) | Elevator 2 moving up (floor 9) | Elevator 3 moving down (floor 14) | Elevator 4 moving down (floor 15) | Elevator 5 moving down (floor 17)
+[Time: 47] Passenger 39 boarded elevator 2
+[47]Elevator 1 moving down (floor 7) | Elevator 2 moving up (floor 10) | Elevator 3 moving down (floor 13) | Elevator 4 moving down (floor 14) | Elevator 5 moving down (floor 16)
+[48]Elevator 1 moving down (floor 6) | Elevator 2 moving up (floor 11) | Elevator 3 moving down (floor 12) | Elevator 4 moving down (floor 13) | Elevator 5 moving down (floor 15)
+[Time: 49] Passenger 28 unboarded at floor 5
+[Time: 49] Passenger 17 unboarded at floor 12
+[Time: 49] Passenger 52 boarded elevator 1
+[Time: 49] Passenger 12 boarded elevator 4
+[49]Elevator 1 moving down (floor 5) | Elevator 2 moving up (floor 12) | Elevator 3 moving down (floor 11) | Elevator 4 moving down (floor 12) | Elevator 5 moving down (floor 14)
+[Time: 50] Passenger 27 unboarded at floor 4
+[50]Elevator 1 moving down (floor 4) | Elevator 2 moving up (floor 13) | Elevator 3 moving down (floor 10) | Elevator 4 moving down (floor 11) | Elevator 5 moving down (floor 13)
+[Time: 51] Passenger 26 unboarded at floor 3
+[Time: 51] Passenger 42 unboarded at floor 9
+[51]Elevator 1 moving down (floor 3) | Elevator 2 moving up (floor 14) | Elevator 3 moving down (floor 9) | Elevator 4 moving down (floor 10) | Elevator 5 moving down (floor 12)
+[Time: 52] Passenger 52 unboarded at floor 2
+[Time: 52] Passenger 18 unboarded at floor 9
+[Time: 52] Passenger 31 boarded elevator 1
+[52]Elevator 1 moving up (floor 2) | Elevator 2 moving up (floor 15) | Elevator 3 moving down (floor 8) | Elevator 4 moving down (floor 9) | Elevator 5 moving down (floor 11)
+[Time: 53] Passenger 16 unboarded at floor 10
+[53]Elevator 1 moving up (floor 3) | Elevator 2 moving up (floor 16) | Elevator 3 moving down (floor 7) | Elevator 4 moving down (floor 8) | Elevator 5 moving down (floor 10)
+[Time: 54] Passenger 45 unboarded at floor 6
+[54]Elevator 1 moving up (floor 4) | Elevator 2 moving up (floor 17) | Elevator 3 moving down (floor 6) | Elevator 4 moving down (floor 7) | Elevator 5 moving down (floor 9)
+[55]Elevator 1 moving up (floor 5) | Elevator 2 moving up (floor 18) | Elevator 3 moving down (floor 5) | Elevator 4 moving down (floor 6) | Elevator 5 moving down (floor 8)
+[Time: 56] Passenger 46 unboarded at floor 5
+[Time: 56] Passenger 12 unboarded at floor 5
+[56]Elevator 1 moving up (floor 6) | Elevator 2 moving up (floor 19) | Elevator 3 moving down (floor 4) | Elevator 4 moving down (floor 5) | Elevator 5 moving down (floor 7)
+[Time: 57] Passenger 47 unboarded at floor 4
+[57]Elevator 1 moving up (floor 7) | Elevator 2 moving up (floor 20) | Elevator 3 moving down (floor 3) | Elevator 5 moving down (floor 6)
+[Time: 58] Passenger 25 unboarded at floor 2
+[58]Elevator 1 moving up (floor 8) | Elevator 2 moving up (floor 21) | Elevator 3 moving down (floor 2) | Elevator 4 moving up (floor 5) | Elevator 5 moving down (floor 5)
+[Time: 59] Passenger 24 unboarded at floor 1
+[Time: 59] Passenger 51 boarded elevator 3
+[59]Elevator 1 moving up (floor 9) | Elevator 2 moving up (floor 22) | Elevator 3 moving up (floor 1) | Elevator 4 moving up (floor 6) | Elevator 5 moving down (floor 4)
+[Time: 60] Passenger 37 unboarded at floor 23
+[Time: 60] Passenger 48 unboarded at floor 3
+[Time: 60] Passenger 53 boarded elevator 1
+[60]Elevator 1 moving up (floor 10) | Elevator 2 moving up (floor 23) | Elevator 3 moving up (floor 2) | Elevator 4 moving up (floor 7) | Elevator 5 moving down (floor 3)
+[Time: 61] Passenger 49 unboarded at floor 2
+[Time: 61] Passenger 40 boarded elevator 1
+[61]Elevator 1 moving up (floor 11) | Elevator 2 moving up (floor 24) | Elevator 3 moving up (floor 3) | Elevator 4 moving up (floor 8) | Elevator 5 moving down (floor 2)
+[Time: 62] Passenger 39 unboarded at floor 25
+[Time: 62] Passenger 50 unboarded at floor 1
+[62]Elevator 1 moving up (floor 12) | Elevator 2 moving up (floor 25) | Elevator 3 moving up (floor 4) | Elevator 4 moving up (floor 9)
+[Time: 63] Passenger 36 unboarded at floor 26
+[63]Elevator 1 moving up (floor 13) | Elevator 2 moving up (floor 26) | Elevator 3 moving up (floor 5) | Elevator 4 moving up (floor 10) | Elevator 5 moving up (floor 2)
+[64]Elevator 1 moving up (floor 14) | Elevator 2 moving up (floor 27) | Elevator 3 moving up (floor 6) | Elevator 4 moving up (floor 11) | Elevator 5 moving up (floor 3)
+[Time: 65] Passenger 38 unboarded at floor 28
+[65]Elevator 1 moving up (floor 15) | Elevator 3 moving up (floor 7) | Elevator 4 moving up (floor 12) | Elevator 5 moving up (floor 4)
+[66]Elevator 1 moving up (floor 16) | Elevator 2 moving down (floor 27) | Elevator 3 moving up (floor 8) | Elevator 4 moving up (floor 13) | Elevator 5 moving up (floor 5)
+[Time: 67] Passenger 13 boarded elevator 4
+[67]Elevator 1 moving up (floor 17) | Elevator 2 moving down (floor 26) | Elevator 3 moving up (floor 9) | Elevator 4 moving down (floor 14) | Elevator 5 moving up (floor 6)
+[Time: 68] Passenger 31 unboarded at floor 18
+[68]Elevator 1 moving up (floor 18) | Elevator 2 moving down (floor 25) | Elevator 3 moving up (floor 10) | Elevator 4 moving down (floor 13) | Elevator 5 moving up (floor 7)
+[69]Elevator 1 moving up (floor 19) | Elevator 2 moving down (floor 24) | Elevator 3 moving up (floor 11) | Elevator 4 moving down (floor 12) | Elevator 5 moving up (floor 8)
+[70]Elevator 1 moving up (floor 20) | Elevator 2 moving down (floor 23) | Elevator 3 moving up (floor 12) | Elevator 4 moving down (floor 11) | Elevator 5 moving up (floor 9)
+[71]Elevator 1 moving up (floor 21) | Elevator 2 moving down (floor 22) | Elevator 3 moving up (floor 13) | Elevator 4 moving down (floor 10) | Elevator 5 moving up (floor 10)
+[72]Elevator 1 moving up (floor 22) | Elevator 2 moving down (floor 21) | Elevator 3 moving up (floor 14) | Elevator 4 moving down (floor 9) | Elevator 5 moving up (floor 11)
+[Time: 73] Passenger 51 unboarded at floor 15
+[Time: 73] Passenger 56 boarded elevator 2
+[Time: 73] Passenger 14 boarded elevator 3
+[Time: 73] Passenger 55 boarded elevator 3
+[73]Elevator 1 moving up (floor 23) | Elevator 2 moving down (floor 20) | Elevator 3 moving down (floor 15) | Elevator 4 moving down (floor 8) | Elevator 5 moving up (floor 12)
+[Time: 74] Passenger 13 unboarded at floor 7
+[74]Elevator 1 moving up (floor 24) | Elevator 2 moving down (floor 19) | Elevator 3 moving down (floor 14) | Elevator 5 moving up (floor 13)
+[Time: 75] Passenger 58 boarded elevator 4
+[75]Elevator 1 moving up (floor 25) | Elevator 2 moving down (floor 18) | Elevator 3 moving down (floor 13) | Elevator 4 moving up (floor 8) | Elevator 5 moving up (floor 14)
+[76]Elevator 1 moving up (floor 26) | Elevator 2 moving down (floor 17) | Elevator 3 moving down (floor 12) | Elevator 4 moving up (floor 9) | Elevator 5 moving up (floor 15)
+[Time: 77] Passenger 40 unboarded at floor 27
+[Time: 77] Passenger 15 boarded elevator 2
+[77]Elevator 1 moving up (floor 27) | Elevator 2 moving down (floor 16) | Elevator 3 moving down (floor 11) | Elevator 4 moving up (floor 10)
+[78]Elevator 1 moving up (floor 28) | Elevator 2 moving down (floor 15) | Elevator 3 moving down (floor 10) | Elevator 4 moving up (floor 11) | Elevator 5 moving up (floor 17)
+[79]Elevator 1 moving up (floor 29) | Elevator 2 moving down (floor 14) | Elevator 3 moving down (floor 9) | Elevator 4 moving up (floor 12) | Elevator 5 moving up (floor 18)
+[Time: 80] Passenger 53 unboarded at floor 30
+[Time: 80] Passenger 54 boarded elevator 1
+[80]Elevator 1 moving down (floor 30) | Elevator 2 moving down (floor 13) | Elevator 3 moving down (floor 8) | Elevator 4 moving up (floor 13) | Elevator 5 moving up (floor 19)
+[Time: 81] Passenger 59 boarded elevator 2
+[81]Elevator 1 moving down (floor 29) | Elevator 2 moving down (floor 12) | Elevator 3 moving down (floor 7) | Elevator 4 moving up (floor 14) | Elevator 5 moving up (floor 20)
+[Time: 82] Passenger 14 unboarded at floor 6
+[82]Elevator 1 moving down (floor 28) | Elevator 2 moving down (floor 11) | Elevator 3 moving down (floor 6) | Elevator 4 moving up (floor 15) | Elevator 5 moving up (floor 21)
+[83]Elevator 1 moving down (floor 27) | Elevator 2 moving down (floor 10) | Elevator 3 moving down (floor 5) | Elevator 4 moving up (floor 16) | Elevator 5 moving up (floor 22)
+[84]Elevator 1 moving down (floor 26) | Elevator 2 moving down (floor 9) | Elevator 3 moving down (floor 4) | Elevator 4 moving up (floor 17) | Elevator 5 moving up (floor 23)
+[Time: 85] Passenger 15 unboarded at floor 8
+[Time: 85] Passenger 57 boarded elevator 1
+[Time: 85] Passenger 60 boarded elevator 4
+[85]Elevator 1 moving down (floor 25) | Elevator 2 moving down (floor 8) | Elevator 3 moving down (floor 3) | Elevator 4 moving up (floor 18) | Elevator 5 moving up (floor 24)
+[86]Elevator 1 moving down (floor 24) | Elevator 2 moving down (floor 7) | Elevator 3 moving down (floor 2) | Elevator 4 moving up (floor 19)
+[Time: 87] Passenger 55 unboarded at floor 1
+[87]Elevator 1 moving down (floor 23) | Elevator 2 moving down (floor 6) | Elevator 4 moving up (floor 20)
+[Time: 88] Passenger 56 unboarded at floor 5
+[88]Elevator 1 moving down (floor 22) | Elevator 2 moving down (floor 5) | Elevator 4 moving up (floor 21)
+[Time: 89] Passenger 59 unboarded at floor 4
+[89]Elevator 1 moving down (floor 21) | Elevator 4 moving up (floor 22)
+[90]Elevator 1 moving down (floor 20) | Elevator 4 moving up (floor 23)
+[91]Elevator 1 moving down (floor 19) | Elevator 4 moving up (floor 24)
+[92]Elevator 1 moving down (floor 18) | Elevator 4 moving up (floor 25)
+[93]Elevator 1 moving down (floor 17) | Elevator 4 moving up (floor 26)
+[Time: 94] Passenger 60 unboarded at floor 27
+[94]Elevator 1 moving down (floor 16) | Elevator 4 moving up (floor 27)
+[95]Elevator 1 moving down (floor 15) | Elevator 4 moving up (floor 28)
+[Time: 96] Passenger 58 unboarded at floor 29
+[96]Elevator 1 moving down (floor 14)
+[97]Elevator 1 moving down (floor 13)
+[98]Elevator 1 moving down (floor 12)
+[99]Elevator 1 moving down (floor 11)
+[Time: 100] Passenger 54 unboarded at floor 10
+[100]Elevator 1 moving down (floor 10)
+[101]Elevator 1 moving down (floor 9)
+[102]Elevator 1 moving down (floor 8)
+[103]Elevator 1 moving down (floor 7)
+[104]Elevator 1 moving down (floor 6)
+[105]Elevator 1 moving down (floor 5)
+[106]Elevator 1 moving down (floor 4)
+[Time: 107] Passenger 57 unboarded at floor 3
+[107]All elevators idle
+[Time: 107] All passengers served. Simulation ending early.
+
+=== SIMULATION COMPLETE ===
+Passengers served: 60
+Average wait time: 32 ticks
+Maximum wait time: 81 ticks
+Average ride time: 16 ticks
+Total distance traveled: 461 floors
+Elevator utilization: E1=100% E2=83% E3=80% E4=87% E5=78%
+Total ticks: 107
